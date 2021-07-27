@@ -5,11 +5,11 @@ import { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
-import Fab from '@material-ui/core/Fab';
-import AddIcon from '@material-ui/icons/Add';
+
 
 // My Components 
 import ChatList from '../ChatList'
+import AddChat from '../AddChat';
 
 const useStyles = makeStyles({
   caption: {
@@ -35,9 +35,8 @@ const useStyles = makeStyles({
 const Home = (props) => {
 
   const classes = useStyles()
-  const [ chats, setChats] = useState(props.chats.chats)
-
-  console.log(chats)
+  const [ chats, setChats ] = useState(props.chats)
+  console.log(props.addChat)
 
   return (
     <>
@@ -52,12 +51,10 @@ const Home = (props) => {
 
       <Container maxWidth="lg" className={classes.chatContainer}>
 
-        <ChatList chats={props.chats.chats} />
+        <ChatList chats={props.chats} />
 
       </Container>
-      {/* <Fab className={classes.addButton} color="primary" aria-label="add">
-        <AddIcon />
-      </Fab> */}
+      <AddChat addChat={props.addChat} />
     </>
   );
 }

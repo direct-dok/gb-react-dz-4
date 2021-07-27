@@ -42,8 +42,6 @@ const useStyles = makeStyles({
 
 function ChatList(props) {
 
-  console.log(props)
-
   const classes = useStyles()
 
   return (

@@ -1,13 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import {
-  useParams
-} from "react-router-dom";
-import {
+  useParams, 
   Redirect
 } from "react-router-dom";
 
-// My components
-import Error from '../Error'
 
 // Material UI
 import { makeStyles } from '@material-ui/core/styles';
@@ -82,9 +78,10 @@ const Chat = (props) => {
   const inputRef = useRef()
 
   useEffect(() => {
-    const currnetUser = props.chats.chats.filter(elem => elem.id == id);
+    const currnetUser = props.chats.filter(elem => elem.id == id);
     setUser(currnetUser[0])
-  })
+    setMessageList([])
+  }, [id])
 
   // console.log('user.length - ', Object.keys(user).length)
 
@@ -135,7 +132,7 @@ const Chat = (props) => {
       <Container maxWidth="md">
         <Grid container >
         <Grid item xs={5}>
-          <ChatList chats={props.chats.chats} />
+          <ChatList chats={props.chats} />
         </Grid>
 
         <Grid item xs={7}>
@@ -152,7 +149,7 @@ const Chat = (props) => {
           </Paper>
 
           <div className={classes.chatContainer}>
-          {console.log('RENDER')}
+
               { messageList.map((el, index) => {
                 return <Message message={el} key={index} />
               }) }

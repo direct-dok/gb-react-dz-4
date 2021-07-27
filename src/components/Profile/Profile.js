@@ -1,5 +1,4 @@
 
-import react from 'react';
 
 // Material UI
 import Container from '@material-ui/core/Container';

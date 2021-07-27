@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 
 // Material UI
 import Typography from '@material-ui/core/Typography';

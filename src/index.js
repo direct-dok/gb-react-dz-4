@@ -1,4 +1,4 @@
-import React, {createContext} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App'
 import './index.css';
@@ -30,10 +30,7 @@ const chats = [
 
 
 ReactDOM.render(
-  <React.StrictMode>
-      <App chats={chats} />
-  </React.StrictMode>,
-  document.getElementById('root')
+      <App chats={chats} />, document.getElementById('root')
 );
 
 
