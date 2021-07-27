@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -20,7 +20,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import Container from '@material-ui/core/Container';
+import AddChat from '../AddChat';
 
 const useStyles = makeStyles({
   bar: {
@@ -50,6 +50,23 @@ const App = (props) => {
 
   const classes = useStyles()
 
+  const [chats, setChats] = useState(props.chats)
+
+  const addChat = (name, status, message) => {
+    console.log('addChat Function', name, status, message)
+
+    const obj = {
+      id: chats.length + 1, 
+      status: status, 
+      name: name, 
+      avatar: '', 
+      message: message
+    }
+
+    setChats(oldArr => [ ...oldArr, obj ])
+
+  }
+
   return (
     <Router>
 
@@ -73,13 +90,13 @@ const App = (props) => {
 
       <Switch>
           <Route exact path="/">
-            <Home chats={props} />
+            <Home chats={chats} addChat={addChat} />
           </Route>
           <Route path="/profile">
             <Profile />
           </Route>
           <Route path="/chats/:id">
-            <Chat chats={props} />
+            <Chat chats={chats} />
           </Route>
           <Route path="/error-404">
             <Error />
